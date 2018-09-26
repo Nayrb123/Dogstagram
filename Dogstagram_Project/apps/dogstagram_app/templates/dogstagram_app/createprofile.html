@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dogstagram</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        .form-col {
+            margin-top: 15px;
+        }
+        .messages {
+            color:firebrick;
+            list-style-type:none;
+        }
+    </style>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    </nav>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} class="list-group-item">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="/registration" method="POST">
+        {%csrf_token%}
+        <div class="form-col">
+            <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="@Username" name="user_name">
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="First name" name="first_name">
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Last name" name="last_name">
+            </div>
+        </div>
+        <div class="form-col">
+            <div class="form-group col-md-6">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
+            </div>
+            <div class="form-group col-md-6">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Dark</button>
+        </div>
+    </form>
+
+    <form action="/login" method="POST">
+        {%csrf_token%}
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+
+            <div class="form-group col-md-6">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" name="user_name">
+            </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="loginpassword">
+            </div>
+
+            <div class="col-auto">
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                <label class="form-check-label" for="autoSizingCheck">
+                    Remember me
+                </label>
+            </div>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
