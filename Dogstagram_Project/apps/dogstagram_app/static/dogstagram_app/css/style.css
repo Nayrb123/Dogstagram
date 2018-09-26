@@ -9,7 +9,6 @@
     color:firebrick;
     list-style-type:none;
 }
-
 .logo {
     height: 48px;
     width: 48px;
@@ -24,6 +23,6 @@
 .placeholder {
     height: 48px;
     width: 48px;
-
+    margin-left: 10px;
 }
 
