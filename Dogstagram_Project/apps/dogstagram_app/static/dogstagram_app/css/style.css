@@ -1,0 +1,28 @@
+
+.searchbox {
+    margin-left: 750px;
+}
+.form-col {
+    margin-top: 15px;
+}
+.messages {
+    color:firebrick;
+    list-style-type:none;
+}
+.logo {
+    height: 48px;
+    width: 48px;
+}
+
+.fontlogo {
+    height: 48px;
+    width: 200px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.placeholder {
+    height: 48px;
+    width: 48px;
+    margin-left: 10px;
+}
+

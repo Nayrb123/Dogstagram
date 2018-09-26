@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^createprofile$', views.createprofile),
     url(r'^registration$', views.processregistration),
     url(r'^login$', views.login),
+    url(r'^profilepage$', views.profile_page),
 ]

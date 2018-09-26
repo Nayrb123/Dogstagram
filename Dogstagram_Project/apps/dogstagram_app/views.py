@@ -40,3 +40,6 @@ def login(request):
         request.session['user_id'] = logged_in_user[0].id
         messages.success(request, 'Successfully Logged In!')
         return redirect('/')
+
+def profile_page(request):
+    return render(request,'dogstagram_app/profilepage.html')
