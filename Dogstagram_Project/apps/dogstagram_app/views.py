@@ -5,7 +5,10 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    return render(request, "dogstagram_app/index.html")
+    user = {
+        "user": User.objects.get(id = request.session['user_id'])
+    }
+    return render(request, "dogstagram_app/index.html", user)
 
 def createprofile(request):
     return render(request, "dogstagram_app/createprofile.html")
@@ -38,8 +41,10 @@ def login(request):
     else:
         request.session['username'] = logged_in_user[0].first_name
         request.session['user_id'] = logged_in_user[0].id
-        messages.success(request, 'Successfully Logged In!')
         return redirect('/')
 
-def profile_page(request):
-    return render(request,'dogstagram_app/profilepage.html')
+def profile_page(request, id):
+    user = {
+        "user": User.objects.get(id = request.session['user_id'])
+    }
+    return render(request,'dogstagram_app/profilepage.html', user)
