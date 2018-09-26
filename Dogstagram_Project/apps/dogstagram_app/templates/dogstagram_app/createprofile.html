@@ -1,19 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 
     <title>Dogstagram</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'dogstagram_app/css/style.css'%}">
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    </nav>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+      
+        <img src='{% static "dogstagram_app/images/logo.jpg" %}' class="logo">
+        <img src='{% static "dogstagram_app/images/dogstagram.png" %}' class="fontlogo">
+    
+          <div class="searchbox">
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group">
+                        <input class="form-control border-secondary py-2" type="search" value="search">
+                          <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <img src='{% static "dogstagram_app/images/placeholder.png" %}' class="placeholder">
+      </nav>
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -22,63 +38,61 @@
     </ul>
     {% endif %}
 
+    <h3>Register:</h3>
     <form action="/registration" method="POST">
         {%csrf_token%}
         <div class="form-col">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                     <input type="text" class="form-control" placeholder="@Username" name="user_name">
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <input type="text" class="form-control" placeholder="First name" name="first_name">
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <input type="text" class="form-control" placeholder="Last name" name="last_name">
             </div>
         </div>
         <div class="form-col">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
             </div>
-            <button type="submit" class="btn btn-outline-dark">Dark</button>
+            <button type="submit" class="register btn btn-outline-dark btn-sm">Register</button>
         </div>
     </form>
+        <h3>Login:</h3>
+        <form action="/login" method="POST">
+            {%csrf_token%}
 
-    <form action="/login" method="POST">
-        {%csrf_token%}
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
-
-            <div class="form-group col-md-6">
+            <div class="form-col">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group col-md-4">
                 <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" name="user_name">
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="loginpassword">
+                </div>
+                <div class="col-auto">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                    <label class="form-check-label" for="autoSizingCheck">
+                        Remember me
+                    </label>
+                    <br>
+                    <button type="submit" class="login btn btn-outline-dark btn-sm">Login</button>
+                </div>
+                </div>
             </div>
-            </div>
-
-            <div class="form-group col-md-6">
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="loginpassword">
-            </div>
-
-            <div class="col-auto">
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                <label class="form-check-label" for="autoSizingCheck">
-                    Remember me
-                </label>
-            </div>
-            </div>
-
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </div>
-        </div>
     </form>
+
 
 
 
