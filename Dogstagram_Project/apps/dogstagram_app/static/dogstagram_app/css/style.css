@@ -1,6 +1,7 @@
 
 .searchbox {
-    margin-left: 750px;
+    float: right;
+    margin-right: 25px;
 }
 .form-col {
     margin-top: 15px;
@@ -19,11 +20,13 @@
     width: 200px;
     margin-top: 8px;
     margin-left: 10px;
+
 }
 .placeholder {
     height: 48px;
     width: 48px;
-    margin-left: 10px;
+    float: right;
+    position: right;
 }
 
 .emmi_pic {
@@ -55,3 +58,11 @@ h5 {
     max-height: 40px;
     text-align: center;
 }
+
+.row {
+    margin: 15px;
+  }
+
+  .bio {
+    margin-bottom: 30px;
+  }
