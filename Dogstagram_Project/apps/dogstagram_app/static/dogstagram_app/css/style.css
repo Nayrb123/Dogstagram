@@ -57,6 +57,13 @@ h5,{
     margin: 15px;
   }
 
-  .bio {
+.bio {
     margin-bottom: 30px;
-  }
+}
+
+.photo_feed {
+    max-width: 715px;
+    max-height: 400px;
+    align-content: center;
+    margin-top: 30px;
+}
