@@ -41,16 +41,10 @@
     text-align: center;
 }
 
-h5 {
+h5,{
     display: inline-block;
     margin-left: 60px;
     margin-right: 59px;
-}
-
-.profile_bio{
-
-}
-.users_bio {
 }
 
 .profile_introduction {
