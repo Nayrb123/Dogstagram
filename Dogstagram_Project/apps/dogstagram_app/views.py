@@ -5,10 +5,13 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    user = {
-        "user": User.objects.get(id = request.session['user_id'])
-    }
-    return render(request, "dogstagram_app/index.html", user)
+    if 'user_id' not in request.session:
+        return redirect('/createprofile')
+    else:
+        user = {
+            "user": User.objects.get(id = request.session['user_id'])
+        }
+        return render(request, "dogstagram_app/index.html", user)
 
 def createprofile(request):
     return render(request, "dogstagram_app/createprofile.html")
@@ -44,7 +47,42 @@ def login(request):
         return redirect('/')
 
 def profile_page(request, id):
-    user = {
-        "user": User.objects.get(id = request.session['user_id'])
-    }
-    return render(request,'dogstagram_app/profilepage.html', user)
+    if 'user_id' not in request.session:
+        return redirect('/createprofile')
+    else:
+        user = {
+            "user": User.objects.get(id = request.session['user_id'])
+        }
+        return render(request,'dogstagram_app/profilepage.html', user)
+
+def editpage(request, id):
+    if 'user_id' not in request.session:
+        return redirect('/createprofile')
+    else:
+        user = {
+            "user": User.objects.get(id=id)
+        }
+        return render(request, 'dogstagram_app/editprofile.html', user)
+
+def processedit(request, id):
+    if request.method == 'POST':
+        if len(request.POST['edituser_name']) > 15:
+            messages.error(request, "Username can't be more than 15 characters.")
+        if len(request.POST['edituser_name']) < 1:
+            messages.error(request, "Please enter a username.")
+        if len(request.POST['editfirst_name']) < 1:
+            messages.error(request, "Please enter a first name.")
+        if len(request.POST['editlast_name']) < 1:
+            messages.error(request, "Please enter a last name")
+        if len(request.POST['edit_bio']) > 140:
+            messages.error(request, "Bio can not exceed 140 characters.")
+            return redirect(f'/editprofile/{id}')
+        
+        else:
+            user = User.objects.get(id = id)
+            user.username = request.POST['edituser_name']
+            user.first_name = request.POST['editfirst_name']
+            user.last_name = request.POST['editlast_name']
+            user.bio = request.POST['edit_bio']
+            user.save()
+            return redirect(f'/profilepage/{id}')
