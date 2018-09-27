@@ -7,32 +7,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'dogstagram_app/css/style.css'%}">
 
+    <style>
+        $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+        });
+    </style>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
             {% load static %}
-            <a href="/"><img src="{% static "dogstagram_app/images/logo.jpg" %}" class="logo"></a>
-            <a href="/"><img src="{% static "dogstagram_app/images/dogstagram.png" %}" class="fontlogo"></a>
-        
-            <div class="searchbox">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="input-group">
-                            <input class="form-control border-secondary py-2" type="search" value="search">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                <a href="/"><img src="{% static "dogstagram_app/images/logo.jpg" %}" class="logo"></a>
+                <a href="/"><img src="{% static "dogstagram_app/images/dogstagram.png" %}" class="fontlogo"></a>
+                    <ul class="navbar-nav ml-auto">
+                        <div class="searchbox">
+                            <div class="row">
+                                <form class="form-inline">
+                                    <div class="form-inline my-2 my-lg-0">
+                                        <div class="input-group">
+                                            <input class="form-control border-secondary py-2" type="search" value="search">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
+                    </ul>
+                    
+                <div class="placeholder">
+                    <a href="/profilepage/{{user.id}}">
+                        <img src="{% static 'dogstagram_app/images/placeholder.png' %}" class="placeholder">
+                    </a>
                 </div>
-                </div>
-        
-            <a href="/profilepage">
-                <img src="{% static 'dogstagram_app/images/placeholder.png' %}" class="placeholder">
-            </a>
         </nav>
+
 
         <div class="profile_bio">
             <div class="users_profile_picture">
@@ -43,22 +56,36 @@
                     
                     <br>
                     <br>
-                        <span class="row justify-content-center">
-                                {{user.bio}} 
-                        </span>
+                        <span class="bio row justify-content-center">
+                            {{user.bio}} 
                     </div>
             </div>
+        </div>
 
+        <div class="container">
+                <div class="row">
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="{% static "dogstagram_app/images/emmi_pic_1.jpg" %}" class="img-fluid rounded">
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="{% static "dogstagram_app/images/emmi_pic_2.jpg" %}" class="img-fluid rounded">
+                  </a>
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="{% static "dogstagram_app/images/emmi_pic_3.jpg" %}" class="img-fluid rounded">
+                  </a>
+                </div>
+                <div class="row">
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid rounded">
+                  </a>
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid rounded">
+                  </a>
+                  <a href="/" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+                    <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid rounded">
+                  </a>
+                </div>
         </div>
 
 
-
-
-
-
-
-
-
-        
 </body>
 </html>
