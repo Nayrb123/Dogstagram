@@ -74,7 +74,7 @@ h5,{
 }
 
 .comment_box {
-    border:2px red solid;
+    border: 1px gray solid;
     height: 325px;
     width: 370px;
     float: right;
@@ -82,5 +82,9 @@ h5,{
     overflow-y: scroll;
 }
 .mx-auto {
+    display: inline-block;
+}
+
+.comment_username {
     display: inline-block;
 }

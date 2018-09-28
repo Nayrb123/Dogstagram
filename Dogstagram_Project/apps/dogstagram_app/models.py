@@ -38,7 +38,7 @@ class User(models.Model):
     objects = UserManager()
 
 class Comment(models.Model):
-    Comment = models.TextField()
+    comment = models.TextField()
     comment_uploader = models.ForeignKey(User, related_name="uploaded_comment", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

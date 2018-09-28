@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User
+from .models import User, Comment
 import bcrypt
 
 # Create your views here.
@@ -9,7 +9,8 @@ def index(request):
         return redirect('/createprofile')
     else:
         user = {
-            "user": User.objects.get(id = request.session['user_id'])
+            "user": User.objects.get(id = request.session['user_id']),
+            "all_comments": Comment.objects.all()
         }
         return render(request, "dogstagram_app/index.html", user)
 
@@ -63,6 +64,12 @@ def editpage(request, id):
             "user": User.objects.get(id=id)
         }
         return render(request, 'dogstagram_app/editprofile.html', user)
+
+def comment(request):
+    if request.method == 'POST':
+        new_comment = Comment.objects.create(comment=request.POST['comment'], comment_uploader = User.objects.get(id = request.session['user_id']))
+        print(new_comment)
+        return redirect('/')
 
 def processedit(request, id):
     if request.method == 'POST':

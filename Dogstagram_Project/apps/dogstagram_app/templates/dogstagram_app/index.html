@@ -46,12 +46,16 @@
                     <img src="{% static "dogstagram_app/images/emmi_pic_6.jpg" %}" class="photo_feed">             
             </div>
             <div class="comment_box">
-                    <p>Comments:</p>
+                <p>Comments:</p>
+                {%for i in all_comments reversed%}
+                <h6 class="comment_username">@{{i.comment_uploader.username}}</h6><p>{{i.comment}}</p>
+                {%endfor%}
+                <form action="/comment" method="POST"><input type="text" name="comment">
+                    {%csrf_token%}
+                    <button type="submit" class="btn btn-outline-light"></button>
+                </form>
             </div>   
-
         </div>
-
-
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
